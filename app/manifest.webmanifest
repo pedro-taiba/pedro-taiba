@@ -1,0 +1,28 @@
+{
+  "name": "Marcaí — Marcações com IA",
+  "short_name": "Marcaí",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F5F1EA",
+  "theme_color": "#1E5B47",
+  "lang": "pt-PT",
+  "icons": [
+    {
+      "src": "/app/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/app/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/app/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marcaí — A tua equipa de IA que enche a agenda</title>
+<meta name="description" content="Marcações online, WhatsApp que responde e marca sozinho, lembretes contra faltas e 6 agentes de IA. Para barbearias, salões, clínicas, eletricistas, canalizadores, limpezas e mais.">
+<meta name="theme-color" content="#1E5B47">
+<meta property="og:title" content="Marcaí — A tua equipa de IA que enche a agenda">
+<meta property="og:description" content="O cliente escreve no WhatsApp, a IA responde e marca. Tu só trabalhas.">
+<meta property="og:type" content="website">
+<link rel="icon" href="app/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F1EA;--card:#fff;--ink:#17201C;--mut:#5E655F;--line:#E5DFD4;--acc:#1E5B47;--acc2:#2F7A61;--soft:#E3EEE8;--gold:#E2A93B;--goldsoft:#FBF0D9;--dark:#10261F}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;letter-spacing:-.02em;margin:0;line-height:1.08}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 24px;border-radius:14px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-size:16px;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translateY(-1px)}
+.btn.pri{background:var(--acc);color:#fff;box-shadow:0 8px 22px rgba(30,91,71,.28)}
+.btn.gold{background:var(--gold);color:var(--ink);box-shadow:0 8px 22px rgba(226,169,59,.3)}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn.light{background:#fff;color:var(--acc)}
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--soft);color:var(--acc);font-weight:600;font-size:13.5px;padding:7px 13px;border-radius:99px}
+.muted{color:var(--mut)}
+/* nav */
+header{position:sticky;top:0;z-index:20;background:rgba(245,241,234,.86);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.sc{border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:Fraunces,serif;font-weight:800;font-size:22px;text-decoration:none}
+.logo i{width:34px;height:34px;border-radius:11px;background:var(--acc);color:#fff;display:grid;place-items:center;font-style:normal;font-size:17px;position:relative}
+.logo i:after{content:"";position:absolute;top:-3px;right:-3px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.nav nav{display:flex;gap:26px;font-size:15px;font-weight:500}
+.nav nav a{text-decoration:none;color:var(--mut)}.nav nav a:hover{color:var(--ink)}
+.nav .btn{padding:10px 16px;font-size:14.5px}
+.navr{display:flex;align-items:center;gap:12px}
+.ig{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);text-decoration:none}
+.ig:hover{color:#C13584}
+.igbtn{display:inline-flex;align-items:center;gap:8px;margin-top:14px;color:#fff;font-weight:600;text-decoration:none;opacity:.92}
+.igbtn:hover{opacity:1}
+@media(max-width:860px){.nav nav{display:none}}
+/* hero */
+.hero{padding:56px 0 40px}
+.hgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(40px,6vw,68px);margin:18px 0 18px}
+.hero h1 em{font-style:normal;color:var(--acc);background:linear-gradient(transparent 72%,var(--goldsoft) 72%,var(--goldsoft) 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero p.lead{font-size:20px;color:var(--mut);max-width:560px;margin:0 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.install{display:inline-flex;align-items:center;gap:10px;margin-top:14px;padding:11px 16px;border-radius:14px;background:#fff;border:1px dashed #BFD8CC;color:var(--acc);font-weight:600;font-size:15px;text-decoration:none}
+.install:hover{border-style:solid}
+.install small{display:block;font-weight:500;color:var(--mut);font-size:12.5px}
+.trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;font-size:14px;color:var(--mut)}
+.trust span:before{content:"✓ ";color:var(--acc);font-weight:700}
+@media(max-width:900px){.hgrid{grid-template-columns:1fr}.hero{padding-top:30px}}
+/* phone */
+.stage{position:relative;display:flex;justify-content:center}
+.phone{width:310px;height:610px;background:#0d1512;border-radius:46px;padding:12px;box-shadow:0 40px 80px -20px rgba(16,38,31,.45),0 0 0 2px #2b3a34 inset;position:relative}
+.screen{width:100%;height:100%;border-radius:36px;overflow:hidden;background:#ECE5DD;display:flex;flex-direction:column}
+.wa-top{background:#1F5E4A;color:#fff;padding:34px 14px 12px;display:flex;align-items:center;gap:10px}
+.wa-top b{display:block;font-size:15px}.wa-top small{font-size:12px;opacity:.85}
+.wa-av{width:36px;height:36px;border-radius:50%;background:#fff;color:var(--acc);display:grid;place-items:center;font-weight:800;font-family:Fraunces}
+.wa-body{flex:1;padding:14px 10px;display:flex;flex-direction:column;gap:7px;overflow:hidden}
+.m{max-width:80%;padding:8px 11px;border-radius:11px;font-size:14px;line-height:1.35;box-shadow:0 1px 1px rgba(0,0,0,.08);opacity:0;transform:translateY(8px)}
+.m.in{align-self:flex-end;background:#DCF8C6;border-top-right-radius:3px}
+.m.out{align-self:flex-start;background:#fff;border-top-left-radius:3px}
+.m small{display:block;text-align:right;font-size:10px;color:#7a857f;margin-top:2px}
+.typing{align-self:flex-start;background:#fff;padding:9px 13px;border-radius:11px;display:flex;gap:4px;opacity:0}
+.typing i{width:6px;height:6px;border-radius:50%;background:#9aa49f;animation:bl 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{0%,100%{opacity:.3}50%{opacity:1}}
+.notif{position:absolute;right:-34px;top:46px;background:#fff;border-radius:18px;padding:12px 14px;box-shadow:0 18px 40px -10px rgba(16,38,31,.35);display:flex;gap:10px;align-items:center;width:250px;opacity:0;transform:translateX(20px)}
+.notif .ic{width:38px;height:38px;border-radius:12px;background:var(--acc);color:#fff;display:grid;place-items:center;font-size:18px;flex:none}
+.notif b{display:block;font-size:14px}.notif span{font-size:12.5px;color:var(--mut)}
+.notif2{top:auto;bottom:26px;left:-44px;right:auto}
+.notif2 .ic{background:var(--gold)}
+@media(max-width:520px){.notif{right:-6px;width:220px}.notif2{left:-6px}.phone{width:290px;height:570px}}
+.play .m,.play .typing,.play .notif{animation:pop .45s ease forwards}
+@keyframes pop{to{opacity:1;transform:none}}
+@keyframes popout{to{opacity:0}}
+/* sections */
+section{padding:80px 0}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+.sh{max-width:720px;margin:0 auto 46px;text-align:center}
+.sh h2{font-size:clamp(32px,4.4vw,48px);margin:12px 0 14px}
+.sh p{color:var(--mut);font-size:19px;margin:0}
+/* problems */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px}
+.pcard .em{font-size:30px}
+.pcard h3{font-size:22px;margin:12px 0 8px}
+.pcard p{margin:0;color:var(--mut);font-size:16px}
+.pcard .fix{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-size:15px;color:var(--acc);font-weight:600}
+@media(max-width:860px){.pgrid{grid-template-columns:1fr}}
+/* agents */
+.dark{background:var(--dark);color:#fff}
+.dark .sh p{color:#B9CCC4}
+.dark .eyebrow{color:var(--gold)}
+.agrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:24px;transition:background .2s,transform .2s}
+.ag:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.ag .ai{width:52px;height:52px;border-radius:16px;background:rgba(226,169,59,.15);display:grid;place-items:center;font-size:26px}
+.ag h3{font-size:22px;margin:16px 0 6px}
+.ag p{margin:0;color:#B9CCC4;font-size:15.5px}
+.ag .ex{margin-top:14px;background:rgba(255,255,255,.06);border-radius:12px;padding:10px 12px;font-size:14px;color:#E4EEE9;font-style:italic}
+.modes{display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+.mode{background:rgba(255,255,255,.07);border-radius:16px;padding:14px 18px;font-size:15px;max-width:330px}
+.mode b{color:var(--gold)}
+@media(max-width:900px){.agrid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.agrid{grid-template-columns:1fr}}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+.step{position:relative;padding:28px 24px;background:#fff;border:1px solid var(--line);border-radius:22px}
+.step:before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:24px;width:38px;height:38px;border-radius:12px;background:var(--acc);color:#fff;display:grid;place-items:center;font-family:Fraunces;font-weight:800;font-size:19px}
+.step h3{font-size:21px;margin:10px 0 6px}.step p{margin:0;color:var(--mut);font-size:16px}
+@media(max-width:860px){.steps{grid-template-columns:1fr;gap:30px}}
+/* sectors */
+.sect{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.sbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px}
+.sbox h3{font-size:24px;margin-bottom:6px}.sbox p{color:var(--mut);margin:0 0 16px;font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:8px 14px;font-size:14.5px;font-weight:500}
+@media(max-width:760px){.sect{grid-template-columns:1fr}}
+/* features */
+.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.f{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
+.f b{display:block;font-size:16px;margin:8px 0 4px}.f span{font-size:14.5px;color:var(--mut)}
+.f .e{font-size:24px}
+@media(max-width:900px){.fgrid{grid-template-columns:1fr 1fr}}
+/* pricing */
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.plan{background:#fff;border:1.5px solid var(--line);border-radius:24px;padding:30px 26px;display:flex;flex-direction:column}
+.plan.best{border-color:var(--acc);box-shadow:0 24px 50px -24px rgba(30,91,71,.45);position:relative;transform:translateY(-8px)}
+.plan.best:before{content:"Mais escolhido";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--acc);color:#fff;font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:99px}
+.plan h3{font-size:24px}
+.plan .p{font-family:Fraunces;font-size:48px;font-weight:800;margin:10px 0 2px}
+.plan .p small{font-family:Inter;font-size:16px;font-weight:500;color:var(--mut)}
+.plan ul{list-style:none;padding:0;margin:18px 0 24px;flex:1}
+.plan li{padding:7px 0 7px 26px;position:relative;font-size:15.5px}
+.plan li:before{content:"✓";position:absolute;left:0;color:var(--acc);font-weight:800}
+.plan .btn{width:100%}
+.pnote{text-align:center;margin-top:26px;color:var(--mut);font-size:15px}
+@media(max-width:900px){.prices{grid-template-columns:1fr}.plan.best{transform:none}}
+/* faq */
+.faq{max-width:780px;margin:0 auto}
+details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:0 22px;margin-bottom:10px}
+summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;font-size:17px;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:24px;line-height:1;color:var(--acc);transition:transform .2s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{margin:0 0 18px;color:var(--mut);font-size:16px}
+/* final cta */
+.final{background:linear-gradient(135deg,#1E5B47,#123A2E);color:#fff;border-radius:32px;padding:56px 40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.final h2{font-size:clamp(32px,4vw,46px);margin-bottom:14px}
+.final p{color:#CFE3DA;margin:0 0 8px}
+form.lead{background:#fff;color:var(--ink);border-radius:22px;padding:24px}
+form.lead label{display:block;margin-bottom:12px}
+form.lead span{display:block;font-size:13px;font-weight:600;color:var(--mut);margin-bottom:5px}
+form.lead input,form.lead select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--line);font:inherit;font-size:16px;background:#fff}
+form.lead input:focus,form.lead select:focus{outline:2px solid var(--soft);border-color:var(--acc)}
+form.lead .btn{width:100%;margin-top:4px}
+.ok{display:none;text-align:center;padding:30px 10px}
+.ok b{font-family:Fraunces;font-size:26px;display:block;margin:8px 0}
+@media(max-width:860px){.final{grid-template-columns:1fr;padding:36px 22px}}
+footer{padding:40px 0 60px;color:var(--mut);font-size:14.5px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line);padding-top:26px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.m,.typing,.notif{opacity:1!important;transform:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header id="hdr"><div class="wrap nav">
+  <a class="logo" href="#"><i>M</i>Marcaí</a>
+  <nav><a href="#agentes">Agentes de IA</a><a href="#como">Como funciona</a><a href="#setores">Para quem</a><a href="#precos">Preços</a><a href="#faq">Perguntas</a></nav>
+  <div class="navr"><a class="ig" href="https://www.instagram.com/marcai.pt/" target="_blank" rel="noopener" aria-label="Instagram da Marcaí"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a><a class="btn pri" href="app/">Experimentar grátis</a></div>
+</div></header>
+
+<!-- HERO -->
+<div class="hero"><div class="wrap hgrid">
+  <div>
+    <span class="tag">✨ Novo: 6 agentes de IA para o teu negócio</span>
+    <h1>A tua equipa de IA que <em>enche a agenda</em>.</h1>
+    <p class="lead">O cliente escreve no WhatsApp, a Marcaí responde e marca sozinha. Envia lembretes, recupera clientes que deixaram de vir e trata das redes sociais. Tu só trabalhas.</p>
+    <div class="cta"><a class="btn pri" href="app/">Experimentar grátis →</a><a class="btn ghost" href="#demo">Pedir demonstração</a></div>
+    <a class="install" href="app/?instalar=1"><span style="font-size:22px">📲</span><span>Instalar a app no telemóvel<small>Grátis, sem loja de apps · Android e iPhone</small></span></a>
+    <div class="trust"><span>Sem cartão para começar</span><span>Pronto em 5 minutos</span><span>Feito em Portugal</span></div>
+  </div>
+  <div class="stage" id="stage">
+    <div class="phone"><div class="screen">
+      <div class="wa-top"><div class="wa-av">BZ</div><div><b>Barbearia do Zé</b><small>online</small></div></div>
+      <div class="wa-body">
+        <div class="m in" style="animation-delay:.6s">Olá! Têm vaga amanhã para corte e barba? <small>18:02</small></div>
+        <div class="typing" style="animation:pop .3s 1.4s forwards,popout .2s 2.6s forwards"><i></i><i></i><i></i></div>
+        <div class="m out" style="animation-delay:2.7s">Olá! 😊 Amanhã tenho às <b>10h00</b>, <b>11h30</b> ou <b>16h15</b>. Qual preferes? <small>18:02</small></div>
+        <div class="m in" style="animation-delay:4.2s">11h30 é perfeito <small>18:03</small></div>
+        <div class="m out" style="animation-delay:5.3s">Feito, Rui! ✅ Corte + Barba amanhã às 11h30 com o Zé. Envio-te um lembrete na véspera. <small>18:03</small></div>
+      </div>
+    </div></div>
+    <div class="notif" style="animation-delay:6.2s"><div class="ic">📅</div><div><b>Nova marcação ✨</b><span>Rui · Corte + Barba · amanhã 11:30</span></div></div>
+    <div class="notif notif2" style="animation-delay:7.2s"><div class="ic">💸</div><div><b>Cliente recuperado</b><span>A Ana voltou a marcar ao fim de 6 semanas</span></div></div>
+  </div>
+</div></div>
+
+<!-- PROBLEMAS -->
+<section id="problemas"><div class="wrap">
+  <div class="sh reveal"><span class="eyebrow">O dia a dia de quem trabalha com marcações</span><h2>Menos telefone, menos faltas, mais clientes.</h2><p>Os três problemas que fazem perder dinheiro todas as semanas, resolvidos sem contratar ninguém.</p></div>
+  <div class="pgrid">
+    <div class="pcard reveal"><div class="em">📞</div><h3>O telefone não para</h3><p>Estás com um cliente na cadeira e tens 5 mensagens à espera de resposta. Quem não recebe resposta marca noutro lado.</p><div class="fix">→ O Rececionista responde em segundos, 24 horas por dia.</div></div>
+    <div class="pcard reveal"><div class="em">🪑</div><h3>Clientes que faltam</h3><p>Uma falta é uma hora perdida que já não volta. E muitas vezes ninguém avisa.</p><div class="fix">→ Lembretes com "SIM ou NÃO" e lista de espera para preencher a vaga.</div></div>
+    <div class="pcard reveal"><div class="em">👋</div><h3>Clientes que desaparecem</h3><p>Vinham todos os meses e deixaram de vir. Ninguém repara até ser tarde.</p><div class="fix">→ O Recuperador fala com eles com uma mensagem pessoal.</div></div>
+  </div>
+</div></section>
+
+<!-- AGENTES -->
+<section id="agentes" class="dark"><div class="wrap">
+  <div class="sh reveal"><span class="eyebrow">A tua equipa de IA</span><h2>6 agentes a trabalhar por ti, todos os dias.</h2><p>Cada um tem a sua função. Ligas os que quiseres e escolhes se fazem tudo sozinhos ou se te pedem aprovação.</p></div>
+  <div class="agrid">
+    <div class="ag reveal"><div class="ai">💬</div><h3>Rececionista</h3><p>Responde no WhatsApp, propõe horas livres reais e marca, remarca ou desmarca na agenda.</p><div class="ex">"Tenho às 10h ou 11h30, qual preferes?"</div></div>
+    <div class="ag reveal"><div class="ai">⏰</div><h3>Anti-faltas</h3><p>Lembrete na véspera com confirmação. Se alguém desmarca, avisa quem está na lista de espera.</p><div class="ex">"Responde SIM para confirmar ou NÃO para desmarcar."</div></div>
+    <div class="ag reveal"><div class="ai">💸</div><h3>Recuperador</h3><p>Encontra quem deixou de vir e escreve uma mensagem pessoal, com o serviço favorito de cada cliente.</p><div class="ex">"Olá Ana! Já há 6 semanas que não te vemos 😊 Guardo-te um horário?"</div></div>
+    <div class="ag reveal"><div class="ai">📸</div><h3>Marketing</h3><p>Todas as segundas cria 3 posts para o Instagram, focados nos dias com mais horários livres.</p><div class="ex">"Terça à tarde ainda há vagas. Marca pelo link na bio 📅"</div></div>
+    <div class="ag reveal"><div class="ai">⭐</div><h3>Avaliações</h3><p>Depois de cada visita pede uma avaliação no Google. Mais estrelas trazem mais clientes novos.</p><div class="ex">"Obrigado pela visita! Deixas-nos uma avaliação? Demora 30 segundos."</div></div>
+    <div class="ag reveal"><div class="ai">📊</div><h3>Gestor</h3><p>Resumo semanal com receita, faltas e 3 sugestões concretas. E responde a qualquer pergunta.</p><div class="ex">"Receita +12%. Sugestão: promoção às terças à tarde."</div></div>
+  </div>
+  <div class="modes reveal"><div class="mode"><b>👀 Modo Sugere</b>: o agente prepara a mensagem e tu aprovas com um toque.</div><div class="mode"><b>⚡ Modo Automático</b>: o agente trata de tudo sozinho.</div></div>
+</div></section>
+
+<!-- COMO FUNCIONA -->
+<section id="como"><div class="wrap">
+  <div class="sh reveal"><span class="eyebrow">Como funciona</span><h2>A trabalhar em 5 minutos.</h2><p>Não tens de instalar nada nem perceber de tecnologia.</p></div>
+  <div class="steps">
+    <div class="step reveal"><h3>Cria o teu negócio</h3><p>Escolhes o tipo de negócio e a Marcaí já traz os serviços, as durações e os preços habituais. Ajustas em segundos e pões o teu logótipo e a tua cor.</p></div>
+    <div class="step reveal"><h3>Partilha o teu link</h3><p>Recebes uma página de reservas própria e um QR code. Põe-no na bio do Instagram, no Google e ao balcão. Liga o teu WhatsApp ao Rececionista.</p></div>
+    <div class="step reveal"><h3>Liga os agentes</h3><p>Escolhes os agentes que queres. A partir daí, a agenda enche-se sozinha e tu vês tudo no telemóvel.</p></div>
+  </div>
+</div></section>
+
+<!-- SETORES -->
+<section id="setores" style="padding-top:20px"><div class="wrap">
+  <div class="sh reveal"><span class="eyebrow">Para quem</span><h2>Para quem vive de marcações.</h2><p>No teu espaço ou em casa do cliente, a Marcaí adapta-se à tua forma de trabalhar.</p></div>
+  <div class="sect">
+    <div class="sbox reveal"><h3>🏪 No teu espaço</h3><p>Agenda por profissional, página de reservas e lembretes.</p><div class="chips"><span class="chip">💈 Barbearias</span><span class="chip">✂️ Cabeleireiros</span><span class="chip">💅 Estética e unhas</span><span class="chip">🩺 Clínicas e fisioterapia</span><span class="chip">🖋️ Tatuagem</span><span class="chip">🏋️ Personal trainers</span></div></div>
+    <div class="sbox reveal"><h3>🏠 Ao domicílio</h3><p>Morada obrigatória, tempo de deslocação entre serviços e visitas de orçamento.</p><div class="chips"><span class="chip">⚡ Eletricistas</span><span class="chip">🔧 Canalizadores</span><span class="chip">🧽 Limpezas</span><span class="chip">❄️ Ar condicionado</span><span class="chip">🛠️ Faz-tudo</span><span class="chip">🎨 Pintura</span><span class="chip">🌿 Jardinagem</span><span class="chip">🔑 Serralheiros</span><span class="chip">🚚 Mudanças</span><span class="chip">🛋️ Lavagem de sofás</span></div></div>
+  </div>
+</div></section>
+
+<!-- FUNCIONALIDADES -->
+<section style="padding-top:30px"><div class="wrap">
+  <div class="sh reveal"><span class="eyebrow">Tudo incluído</span><h2>Tudo o que precisas, numa app só.</h2></div>
+  <div class="fgrid">
+    <div class="f reveal"><div class="e">📅</div><b>Agenda inteligente</b><span>Por dia e por profissional, sem marcações sobrepostas</span></div>
+    <div class="f reveal"><div class="e">🌐</div><b>Página de reservas</b><span>Com o teu logótipo, a tua cor e QR code</span></div>
+    <div class="f reveal"><div class="e">📲</div><b>WhatsApp</b><span>Lembretes, confirmações e respostas automáticas</span></div>
+    <div class="f reveal"><div class="e">👥</div><b>Ficha de cliente</b><span>Histórico, total gasto, faltas e notas</span></div>
+    <div class="f reveal"><div class="e">⏳</div><b>Lista de espera</b><span>Vagas preenchidas sem esforço</span></div>
+    <div class="f reveal"><div class="e">📈</div><b>Números do negócio</b><span>Receita, ocupação e serviços mais vendidos</span></div>
+    <div class="f reveal"><div class="e">📱</div><b>App no telemóvel</b><span>Instala-se no ecrã inicial, sem lojas de apps</span></div>
+    <div class="f reveal"><div class="e">🔒</div><b>Dados seguros</b><span>Cada negócio só vê os seus dados</span></div>
+  </div>
+</div></section>
+
+<!-- PREÇOS -->
+<section id="precos"><div class="wrap">
+  <div class="sh reveal"><span class="eyebrow">Preços</span><h2>Mais barato que uma hora de trabalho por semana.</h2><p>Sem fidelização. Cancelas quando quiseres.</p></div>
+  <div class="prices">
+    <div class="plan reveal"><h3>Grátis</h3><div class="p">0 €<small>/mês</small></div><span class="muted">Para começar</span>
+      <ul><li>Até 50 marcações por mês</li><li>Página de reservas com QR code</li><li>Logótipo e cor da tua marca</li><li>Lembretes no WhatsApp com um toque</li></ul>
+      <a class="btn ghost" href="app/">Começar grátis</a></div>
+    <div class="plan best reveal"><h3>Pro</h3><div class="p">29 €<small>/mês</small></div><span class="muted">A tua equipa de IA completa</span>
+      <ul><li>Marcações ilimitadas</li><li><b>6 agentes de IA</b></li><li>Rececionista no WhatsApp 24h</li><li>Envio automático de lembretes</li><li>Recuperação de clientes e avaliações</li></ul>
+      <a class="btn pri" href="app/">Experimentar 14 dias grátis</a></div>
+    <div class="plan reveal"><h3>Equipa</h3><div class="p">49 €<small>/mês</small></div><span class="muted">Para equipas de 3 a 10 pessoas</span>
+      <ul><li>Tudo do Pro</li><li>Até 10 profissionais ou técnicos</li><li>Número de WhatsApp próprio</li><li>Suporte prioritário</li></ul>
+      <a class="btn ghost" href="#demo">Falar connosco</a></div>
+  </div>
+  <p class="pnote reveal">💡 Ainda há <b>preço de fundador</b> para os primeiros negócios. Pede uma demonstração e pergunta.</p>
+</div></section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:20px"><div class="wrap">
+  <div class="sh reveal"><span class="eyebrow">Perguntas frequentes</span><h2>Ficou alguma dúvida?</h2></div>
+  <div class="faq">
+    <details class="reveal"><summary>Os meus clientes têm de instalar alguma coisa?</summary><p>Não. Os teus clientes marcam pelo WhatsApp, como já fazem, ou pela tua página de reservas. Só tu usas a app da Marcaí.</p></details>
+    <details class="reveal"><summary>Posso continuar a usar o meu número de WhatsApp?</summary><p>Na maioria dos casos, sim: o mesmo número pode ficar ligado à app WhatsApp Business no teu telemóvel e ao Rececionista ao mesmo tempo. Ajudamos-te a fazer a ligação.</p></details>
+    <details class="reveal"><summary>E se a IA disser alguma coisa errada?</summary><p>Os agentes só usam os teus serviços, preços e horários reais e nunca inventam promoções. No modo Sugere, nada é enviado sem a tua aprovação. E podes ver todas as conversas na app.</p></details>
+    <details class="reveal"><summary>Funciona para serviços em casa do cliente?</summary><p>Sim. Para eletricistas, canalizadores, limpezas e outros serviços ao domicílio, a Marcaí pede a morada, deixa tempo de deslocação entre trabalhos e propõe uma visita de orçamento quando o trabalho não está claro.</p></details>
+    <details class="reveal"><summary>Posso mudar os preços e os serviços?</summary><p>Sempre que quiseres, em Mais → Serviços e preços. A página de reservas e o Rececionista passam a usar os novos valores na hora.</p></details>
+    <details class="reveal"><summary>Há fidelização?</summary><p>Não. Pagas mês a mês e cancelas quando quiseres. Os teus dados podem ser exportados a qualquer momento.</p></details>
+  </div>
+</div></section>
+
+<!-- CTA FINAL / FORM -->
+<section id="demo" style="padding-top:20px"><div class="wrap">
+  <div class="final reveal">
+    <div>
+      <h2>Vê a Marcaí a trabalhar no teu negócio.</h2>
+      <p>Deixa o teu contacto e mostramos-te em 15 minutos, por videochamada ou por WhatsApp, com os teus serviços e preços.</p>
+      <p style="margin-top:18px">Ou experimenta já sozinho:</p>
+      <a class="btn light" href="app/" style="margin-top:6px">Abrir a app grátis →</a> <a class="btn" href="app/?instalar=1" style="margin-top:6px;background:rgba(255,255,255,.14);color:#fff">📲 Instalar no telemóvel</a><br><a class="igbtn" href="https://www.instagram.com/marcai.pt/" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg> Segue-nos no Instagram: @marcai.pt</a>
+    </div>
+    <form class="lead" name="demonstracao" method="POST" id="leadForm">
+      <input type="hidden" name="form-name" value="demonstracao">
+      <p style="display:none"><label>Não preencher: <input name="empresa_site"></label></p>
+      <div id="fields">
+        <label><span>O teu nome</span><input name="nome" required autocomplete="name"></label>
+        <label><span>Nome do negócio</span><input name="negocio" required></label>
+        <label><span>Tipo de negócio</span><select name="tipo" required><option value="">Escolhe…</option><option>Barbearia</option><option>Cabeleireiro</option><option>Estética / unhas</option><option>Clínica / fisioterapia</option><option>Tatuagem</option><option>Personal trainer</option><option>Eletricista</option><option>Canalizador</option><option>Limpezas</option><option>Ar condicionado</option><option>Outro serviço ao domicílio</option><option>Outro</option></select></label>
+        <label><span>Telemóvel / WhatsApp</span><input name="telefone" type="tel" inputmode="tel" required autocomplete="tel" placeholder="912 345 678"></label>
+        <button class="btn gold" type="submit">Quero uma demonstração</button>
+        <p class="muted" style="font-size:12.5px;margin:10px 0 0">Usamos o teu contacto só para marcar a demonstração. Ver a <a href="privacidade.html">Política de Privacidade</a>.</p>
+      </div>
+      <div class="ok" id="ok"><div style="font-size:44px">🎉</div><b>Pedido recebido!</b><span class="muted">Vamos falar contigo em breve pelo WhatsApp.</span></div>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="wrap foot">
+  <a class="logo" href="#" style="font-size:18px"><i style="width:28px;height:28px;font-size:14px">M</i>Marcaí</a>
+  <span>© 2026 Marcaí · Feito em Portugal 🇵🇹 · <a href="br/" style="color:inherit">🇧🇷 Brasil</a></span>
+  <span><a href="app/">Entrar na app</a> · <a href="#precos">Preços</a> · <a href="#faq">Ajuda</a> · <a href="privacidade.html">Privacidade</a> · <a href="termos.html">Termos</a> · <a href="https://www.instagram.com/marcai.pt/" target="_blank" rel="noopener">Instagram @marcai.pt</a></span>
+</div></footer>
+
+<script>
+// cabeçalho
+const hdr=document.getElementById('hdr');addEventListener('scroll',()=>hdr.classList.toggle('sc',scrollY>8),{passive:true});
+// animação do telefone (repete)
+const stage=document.getElementById('stage');
+function play(){stage.classList.remove('play');void stage.offsetWidth;stage.classList.add('play')}
+play();setInterval(play,11000);
+// revelar ao fazer scroll
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12}):null;
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*80+'ms';io?io.observe(el):el.classList.add('on')});
+// formulário (Netlify Forms)
+document.getElementById('leadForm').addEventListener('submit',async e=>{
+  e.preventDefault();const f=e.target,b=f.querySelector('button');b.disabled=true;b.textContent='A enviar…';
+  try{
+    const d=Object.fromEntries(new FormData(f));if(d.empresa_site)throw 0;
+    const r=await fetch('https://whdeqwoxorpagvpjvrrv.supabase.co/rest/v1/leads',{method:'POST',headers:{'Content-Type':'application/json',apikey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndoZGVxd294b3JwYWd2cGp2cnJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3NDAxODEsImV4cCI6MjExMDMxNjE4MX0.zw8DAKCQXw-SQOlwgcDvlCdheBBNxwrWG4aXUxZxqiw',Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndoZGVxd294b3JwYWd2cGp2cnJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3NDAxODEsImV4cCI6MjExMDMxNjE4MX0.zw8DAKCQXw-SQOlwgcDvlCdheBBNxwrWG4aXUxZxqiw',Prefer:'return=minimal'},body:JSON.stringify({pais:'PT',nome:d.nome,negocio:d.negocio,tipo:d.tipo||null,telefone:d.telefone,origem:(new URLSearchParams(location.search).get('utm_source')||document.referrer||'site').slice(0,200)})});
+    if(!r.ok)throw 0;document.getElementById('fields').style.display='none';document.getElementById('ok').style.display='block';
+  }catch(_){b.disabled=false;b.textContent='Tentar de novo';alert('Não foi possível enviar. Tenta de novo.')}
+});
+</script>
+</body>
+</html>
