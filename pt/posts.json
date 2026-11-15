@@ -1,0 +1,83 @@
+{
+ "conta": "@marcai.pt",
+ "posts": [
+  {
+   "n": 1,
+   "titulo": "POST 1 · Lançamento",
+   "imagens": [
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-1.jpg"
+   ],
+   "legenda": "Apresentamos a Marcaí 👋 A agenda que se enche sozinha.\nO cliente escreve no WhatsApp, a IA responde, vê os horários livres e marca. Tu só trabalhas.\nPara barbearias, salões, clínicas, eletricistas, canalizadores, limpezas e muito mais.\n👉 Experimenta grátis: link na bio\n\n#marcai #agendaonline #inteligenciaartificial #pequenosnegocios #portugal #empreendedorismo"
+  },
+  {
+   "n": 2,
+   "titulo": "POST 2 · Carrossel dos agentes (capa + 1 slide por agente)",
+   "imagens": [
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-2.jpg",
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-2-slide-2.jpg",
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-2-slide-3.jpg",
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-2-slide-4.jpg",
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-2-slide-5.jpg",
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-2-slide-6.jpg",
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-2-slide-7.jpg"
+   ],
+   "legenda": "Conhece a tua nova equipa 👇 (desliza)\n💬 Rececionista: responde no WhatsApp 24h e marca sozinho\n⏰ Anti-faltas: lembretes com SIM/NÃO e lista de espera\n💸 Recuperador: fala com quem deixou de vir\n📸 Marketing: posts para encher os dias fracos\n⭐ Avaliações: pede estrelas no Google\n📊 Gestor: resumo semanal com sugestões\nLink na bio.\n\n#ia #automacao #whatsappbusiness #barbearia #salaodebeleza"
+  },
+  {
+   "n": 3,
+   "titulo": "POST 3 · Pergunta (gera comentários)",
+   "imagens": [
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-3.jpg"
+   ],
+   "legenda": "Sê honesto 👀 Quantas mensagens ficaram sem resposta porque estavas com um cliente?\nCada uma pode ser uma marcação que foi para outro lado.\nCom a Marcaí, o WhatsApp responde em segundos, mesmo quando estás ocupado.\nComenta EU se te acontece 👇\n\n#barbeiro #cabeleireiro #estetica #negocioslocais"
+  },
+  {
+   "n": 4,
+   "titulo": "POST 4 · Funciona de noite (ideal em Reel com a conversa a aparecer)",
+   "imagens": [
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-4.jpg"
+   ],
+   "legenda": "A tua loja fecha. A tua agenda não. 🌙\nO Rececionista da Marcaí responde e marca a qualquer hora, com os teus horários e preços reais.\nAcordas com a agenda mais cheia.\nLink na bio para experimentar.\n\n#whatsapp #agendamentoonline #ia #portugal"
+  },
+  {
+   "n": 5,
+   "titulo": "POST 5 · Faltas",
+   "imagens": [
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-5.jpg"
+   ],
+   "legenda": "Uma falta é uma hora perdida que não volta. 💸\nO Anti-faltas envia o lembrete na véspera: Responde SIM para confirmar ou NÃO para desmarcar.\nSe alguém desmarca, avisa logo quem está na lista de espera.\nGuarda este post se as faltas te tiram do sério 📌\n\n#faltas #gestao #barbearia #clinica"
+  },
+  {
+   "n": 6,
+   "titulo": "POST 6 · Serviços ao domicílio",
+   "imagens": [
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-6.jpg"
+   ],
+   "legenda": "Trabalhas em casa dos clientes? 🔧⚡🧽\nA Marcaí pede a morada e o problema, deixa 30 min de deslocação entre trabalhos e propõe visita de orçamento quando é preciso.\nEletricistas, canalizadores, limpezas, ar condicionado, jardinagem e mais.\n\n#eletricista #canalizador #limpezas #servicosaodomicilio #portugal"
+  },
+  {
+   "n": 7,
+   "titulo": "POST 7 · Recuperador",
+   "imagens": [
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-7.jpg"
+   ],
+   "legenda": "Lembras-te de todos os clientes que deixaram de vir? A IA lembra-se 😉\nO Recuperador encontra-os e escreve uma mensagem pessoal, com o serviço favorito de cada um.\nClientes que voltam são dinheiro que já era teu.\n\n#fidelizacao #clientes #marketinglocal"
+  },
+  {
+   "n": 8,
+   "titulo": "POST 8 · Preço",
+   "imagens": [
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-8.jpg"
+   ],
+   "legenda": "Quanto custa uma equipa que trabalha 24h? 29 € por mês.\nMarcações ilimitadas, 6 agentes de IA e WhatsApp automático.\nHá plano grátis para começar. Sem fidelização.\n👉 Link na bio\n\n#software #pme #empreendedor"
+  },
+  {
+   "n": 9,
+   "titulo": "POST 9 · Começa hoje (fica no topo da grelha)",
+   "imagens": [
+    "https://raw.githubusercontent.com/pedro-taiba/pedro-taiba/marcai-media/pt/marcai-post-9.jpg"
+   ],
+   "legenda": "Começa em 5 minutos ⏱️\n1. Cria o teu negócio\n2. Partilha o teu link de reservas\n3. Liga os agentes\nExperimenta grátis no link da bio e instala no telemóvel, sem loja de apps.\nPartilha com aquele amigo que tem um negócio 🙌\n\n#marcai #comecahoje #empreendedor"
+  }
+ ]
+}
