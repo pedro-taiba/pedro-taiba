@@ -1,5 +1,5 @@
 // Service worker: guarda a "casca" da app para abrir rápido e instalar no telemóvel.
-const CACHE = 'marcai-v5';
+const CACHE = 'marcai-v6';
 const BASE = new URL('./', self.location).pathname; // funciona em /app/ ou /qualquer/pasta/app/
 const SHELL = ['', 'index.html', 'app.js', 'locale.js', 'agents-ui.js', 'data.js', 'config.js', 'manifest.webmanifest', 'icon.svg', 'icon-192.png'].map(f => BASE + f);
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });

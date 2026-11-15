@@ -640,7 +640,7 @@ function vMais() {
   <div class="card menu">
     ${isStandalone() ? '' : it('📲', 'Instalar a app no telemóvel', 'Ícone no ecrã inicial, sem loja de apps', 'installSheet()')}
     ${it('🔔', 'Notificações', notifyOn() ? 'Ativas neste telemóvel' : 'Aviso no telemóvel a cada nova marcação', 'notifySheet()')}
-    ${it('💬', 'WhatsApp', waAuto() ? 'Automático ligado ⚡' : 'Modo 1 toque ✅ · automático brevemente', 'waSheet()')}
+    ${it('💬', 'WhatsApp', waAuto() ? 'Automático ligado ⚡' : waShared() && DB.cloud ? 'Link de marcação pelo WhatsApp' : 'Modo 1 toque ✅', 'waSheet()')}
     ${it('⭐', 'Plano e faturação', DB.cloud ? 'Atual: ' + plan : 'Grátis, Pro e Equipa', 'plansSheet()')}
     ${it('📤', 'Exportar dados', 'Copiar tudo em JSON', 'copy(JSON.stringify(S,null,1))')}
     ${it('🔒', 'Privacidade e termos', 'Como tratamos os dados', "location.href='../privacidade.html'")}

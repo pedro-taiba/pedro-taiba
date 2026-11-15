@@ -375,10 +375,17 @@ function runLocalBasics(force) {
 }
 
 /* ================= WHATSAPP: modo 1 toque / automático ================= */
-const waAuto = () => DB.cloud && !!S.biz.wa && isPaid();
+const waShared = () => (window.VEZ_CONFIG || {}).WA_SHARED_NUMBER || '';
+// automático quando o negócio tem número próprio OU usa o número partilhado da Marcaí
+const waAuto = () => DB.cloud && isPaid() && (!!S.biz.wa || !!waShared());
+function waBookLink() {
+  const n = waShared(); if (!n || !S.biz.slug) return '';
+  const t = (LOC.br ? 'Olá! Quero agendar na ' : 'Olá! Quero marcar na ') + S.biz.name + ' (código: ' + S.biz.slug + ')';
+  return 'https://wa.me/' + n.replace(/\D/g, '') + '?text=' + encodeURIComponent(t);
+}
 function waCard() {
   return waAuto()
-    ? `<div class="card small" onclick="waSheet()" style="cursor:pointer;margin-bottom:14px">⚡ <b>WhatsApp automático ligado</b> · os agentes enviam e respondem sozinhos.</div>`
+    ? `<div class="card small" onclick="waSheet()" style="cursor:pointer;margin-bottom:14px">⚡ <b>WhatsApp automático ligado</b> · os agentes respondem e marcam sozinhos.${!S.biz.wa && waShared() ? ' <b>Partilha o teu link ›</b>' : ''}</div>`
     : `<div class="card small" onclick="waSheet()" style="cursor:pointer;margin-bottom:14px;background:#EEF6F1;border-color:#CFE3DA">👆 <b>WhatsApp: modo 1 toque ✅</b> · os agentes preparam as mensagens e tu envias com um toque. <span class="muted">Automático: brevemente ›</span></div>`;
 }
 const waCfg = () => window.VEZ_CONFIG || {};
@@ -386,11 +393,17 @@ const waCanConnect = () => DB.cloud && S.role !== 'staff' && !!waCfg().META_APP_
 function waSheet() {
   const auto = waAuto(), linked = !!S.biz.wa, can = waCanConnect();
   const num = S.biz.waPhone ? ` (${esc(S.biz.waPhone)})` : '';
+  const wl = waBookLink();
   openSheet(`<h2>💬 WhatsApp do negócio</h2>
+  ${wl ? `<div class="card" style="border:2px solid var(--acc);text-align:center"><h3 style="text-align:left">⚡ Marcar pelo WhatsApp ${isPaid() ? '<span class="pill">ativo</span>' : ''}</h3>
+    <div class="small" style="text-align:left">Os teus clientes tocam no link (ou leem o QR), escrevem no WhatsApp e a IA responde e marca por ti, 24 horas por dia. <b>Não precisas de configurar nada.</b></div>
+    <div id="waqr" style="display:inline-block;padding:8px;background:#fff;border-radius:12px;margin-top:12px"></div>
+    <div class="grid2" style="margin-top:10px"><button class="btn" id="waCopy">Copiar link</button><a class="btn line" href="${esc(wl)}" target="_blank" rel="noopener">Experimentar</a></div>
+    <div class="small muted" style="text-align:left;margin-top:8px">Põe o link na bio do Instagram e na mensagem automática do teu WhatsApp, e o QR ao balcão. ${isPaid() ? '' : '<b>A resposta automática faz parte do plano Pro.</b>'}</div></div>` : ''}
   <div class="card ${auto ? '' : 'on'}" style="${auto ? '' : 'border:2px solid var(--acc)'}"><h3>👆 Modo 1 toque ${auto ? '' : '<span class="pill">ativo</span>'}</h3>
     <div class="small">Funciona já, com o teu WhatsApp normal ou Business, sem configurar nada.</div>
     <div class="small muted" style="margin-top:6px">• Os agentes escrevem os lembretes, as vagas e as mensagens a clientes<br>• Aparecem em <b>Agentes → Para aprovar</b><br>• Carregas em <b>Enviar no WhatsApp</b>: abre a conversa com o texto pronto e só confirmas</div></div>
-  <div class="card" style="${auto ? 'border:2px solid var(--acc)' : ''}"><h3>⚡ Modo automático ${auto ? '<span class="pill">ativo</span>' : linked ? '<span class="pill">ligado</span>' : can ? '' : '<span class="pill" style="background:var(--gold-soft);color:#8a5a00">brevemente</span>'}</h3>
+  <div class="card" style="${auto ? 'border:2px solid var(--acc)' : ''}"><h3>${wl ? '📱 Usar o teu próprio número (opcional)' : '⚡ Modo automático'} ${linked ? '<span class="pill">ligado</span>' : wl ? '' : auto ? '<span class="pill">ativo</span>' : can ? '' : '<span class="pill" style="background:var(--gold-soft);color:#8a5a00">brevemente</span>'}</h3>
     <div class="small">O Rececionista responde e marca sozinho no teu número, 24 horas por dia, e os lembretes saem sem tocares em nada.</div>
     <div class="small muted" style="margin-top:6px">• Ligas com um botão: entras com o Facebook e confirmas o teu número<br>• Continuas a usar a app WhatsApp Business no telemóvel<br>• Os teus clientes não notam diferença: escrevem para o mesmo número</div>
     ${linked
@@ -404,6 +417,8 @@ function waSheet() {
     const b = sh.querySelector('#waNotify');
     if (b) b.onclick = () => { try { localStorage.setItem('marcai_wa_aviso', '1'); } catch (e) {} b.textContent = '✓ Vamos avisar-te'; toast('Combinado! Avisamos-te na app quando estiver pronto.'); };
     const c = sh.querySelector('#waConnect'); if (c) c.onclick = () => waConnect(c);
+    const q = sh.querySelector('#waqr'); if (q && window.QRCode) { try { new QRCode(q, { text: wl, width: 170, height: 170, colorDark: '#17201C' }); } catch (e) {} }
+    const cp = sh.querySelector('#waCopy'); if (cp) cp.onclick = () => copy(wl);
     const o = sh.querySelector('#waOff');
     if (o) o.onclick = async () => {
       if (!confirm('Desligar o WhatsApp automático? Voltas ao modo 1 toque.')) return;
